@@ -47,7 +47,15 @@ public class Program
 
                 // Si arribem aquí no ha saltat cap excepció: entrada vàlida
                 isValid = true;
-                Console.WriteLine($"You chose: {option}");
+                switch (option)
+                {
+                    case 1:
+                        TrainWizard();
+                        break;
+                    default:
+                        Console.WriteLine($"You chose: {option}");
+                        break;
+                }
             }
             catch (FormatException)              // Text que no és un número: "abc", "3.5", ""
             {
@@ -75,5 +83,25 @@ public class Program
             // Comprovem primer !isValid perquè, amb un error, 'option' pot
             // valer 0 d'una volta anterior.
         } while (!isValid || option != 0);
+    }
+    static void TrainWizard()
+    {
+        string wizardName;
+        int power = 0, mageLevel = 1;
+
+        do
+        {
+            Console.WriteLine("Enter your name, fellow wizard: ");
+            wizardName = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(wizardName))
+            {
+                Console.WriteLine("Error: Name cannot be empty.");
+            }
+        } while (string.IsNullOrWhiteSpace (wizardName));
+
+        wizardName = wizardName.Trim();
+
+        Console.WriteLine($"Nice to meet you, {wizardName}. Your current level is {mageLevel}. Work hard and get stronger to enter the Dragon's Dungeon!");
     }
 }
