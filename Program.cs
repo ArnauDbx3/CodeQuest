@@ -4,6 +4,7 @@ public class Program
 {
     static void Main()
     {
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
         const string MenuTitle = "===== MAIN MENU - CODEQUEST =====";
         const string MenuOption1 = "1. Train your wizard";
         const string MenuOption2 = "2. Check the dungeon";
@@ -91,7 +92,7 @@ public class Program
 
         do
         {
-            Console.WriteLine("Enter your name, fellow wizard: ");
+            Console.WriteLine("🧙🏼‍ Enter your name, fellow wizard: ");
             wizardName = Console.ReadLine();
 
             if (string.IsNullOrWhiteSpace(wizardName))
@@ -103,5 +104,20 @@ public class Program
         wizardName = wizardName.Trim();
 
         Console.WriteLine($"Nice to meet you, {wizardName}. Your current level is {mageLevel}. Work hard and get stronger to enter the Dragon's Dungeon!");
+
+        Random random = new Random();
+        int totalHours = 0;
+
+        for (int day = 1; day <= 5; day++)
+        {
+            int hours = random.Next(25);
+            int powerGained = random.Next(11);
+
+            totalHours += hours;
+            power += powerGained;
+
+            Console.WriteLine($"Day {day} -> {wizardName}, you have meditated {totalHours} hours and your power is now {power} points! 💪🏼");
+
+        }
     }
 }
