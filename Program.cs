@@ -116,7 +116,10 @@ public class Program
             totalHours += hours;
             power += powerGained;
 
-            Console.WriteLine($"Day {day} -> {wizardName}, you have meditated {totalHours} hours and your power is now {power} points! 💪🏼");
+            int previousLevel = mageLevel;
+            mageLevel = 1 + (power / 10);
+
+            Console.WriteLine($"Day {day} -> {wizardName}, you have meditated {totalHours} hours and your power is now {power} points. Your level is now {mageLevel}! 💪🏼");
 
         }
     }
