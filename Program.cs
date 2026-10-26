@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks.Dataflow;
 
 public class Program
 {
@@ -110,8 +111,8 @@ public class Program
 
         for (int day = 1; day <= 5; day++)
         {
-            int hours = random.Next(25);
-            int powerGained = random.Next(11);
+            int hours = random.Next(1, 25);
+            int powerGained = random.Next(1, 11);
 
             totalHours += hours;
             power += powerGained;
@@ -121,6 +122,42 @@ public class Program
 
             Console.WriteLine($"Day {day} -> {wizardName}, you have meditated {totalHours} hours and your power is now {power} points. Your level is now {mageLevel}! 💪🏼");
 
+            if (mageLevel > previousLevel)
+            {
+                Console.WriteLine($"⭐ -> {wizardName} has reached level {mageLevel}!");
+            }
+
         }
+        string message;
+        string rank;
+        if (power < 20)
+        {
+            message = "Try again in June";
+            rank = "Raoden the Elantrian";
+        }
+        else if (power < 30)
+        {
+            message = "You still mix up the wand with a spoon";
+            rank = "Zyn the Buggy";
+        }
+        else if (power < 35)
+        {
+            message = "You are an Invoker of Magic Breezes";
+            rank = "Arka Nullpointer";
+        }
+        else if (power < 40)
+        {
+            message = "Wow! You can summon dragons without burning down the lab!";
+            rank = "Elarion of the Embers";
+        }
+        else
+        {
+            message = "You have reached the rank of Master of the Arcane";
+            rank = "ITB-Wizard the Grey";
+        }
+        Console.WriteLine();
+        Console.WriteLine($"Final power: {power} | Final level: {mageLevel}");
+        Console.WriteLine(message);
+        Console.WriteLine($"Your rank is {rank}");
     }
 }
